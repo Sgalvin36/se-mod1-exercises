@@ -3,7 +3,7 @@ require './lib/werewolf'
 
 RSpec.describe Werewolf do
   it 'has a name' do
-    werewolf = Werewolf.new('David')
+    werewolf = Werewolf.new('David', 'London')
     expect(werewolf.name).to eq('David')
   end
 
@@ -50,35 +50,70 @@ RSpec.describe Werewolf do
   end
 
   it 'is not hungry by default' do
-    # your code here
+    werewolf = Werewolf.new('Worf', 'Enterprise')
+
+    expect(werewolf.hungry?).to be false
   end
 
   it 'becomes hungry after changing to a werewolf' do
-    # your code here
+    werewolf = Werewolf.new('Worf', 'Enterprise')
+    werewolf.change!
+
+    expect(werewolf.hungry?).to be true  
   end
 
-  class Victim
-    attr_accessor :status
+  # class Victim
+  #   attr_accessor :status
 
-    def initialize
-      @status = :alive
-    end
-  end
+  #   def initialize
+  #     @status = :alive
+  #   end
+
+  #   def eaten
+  #     @status = :dead
+  #   end
+  # end
 
   it 'consumes a victim' do
-    # your code here
+    werewolf = Werewolf.new('Worf', 'Enterprise')
+    victim = Victim.new
+
+    werewolf.consume(victim)
+
+    expect(werewolf.hungry?).to be false  
   end
 
   it 'cannot consume a victim if it is in human form' do
-    # your code here
+    werewolf = Werewolf.new('Worf', 'Enterprise')
+    victim = Victim.new
+
+    try_1 = werewolf.consume(victim)
+    expect(try_1).equal? "You can't eat that!"
+    werewolf.change!
+    try_2 = werewolf.consume(victim)
+    expect(try_2).equal? "Delicious!"  
   end
 
   it 'a werewolf that has consumed a human being is no longer hungry' do
-    # your code here
+    werewolf = Werewolf.new('Worf', 'Enterprise')
+    victim = Victim.new
+
+    werewolf.change!
+    werewolf.consume(victim)
+    
+
+    expect(werewolf.hungry?).to be false  
   end
 
   it 'a werewolf who has consumed a victim makes the victim dead' do
-    # your code here
+    werewolf = Werewolf.new('Worf', 'Enterprise')
+    victim = Victim.new
+
+    werewolf.consume(victim)
+    expect(victim.status).to eq :alive
+    werewolf.change!
+    werewolf.consume(victim)
+    expect(victim.status).to eq :dead  
   end
 
 end
