@@ -8,11 +8,13 @@ class Centaur
         @cranky = false
         @standing = true
         @level_of_crank = 0
+        @rested = false
+        @sick = false
     end
 
     def shoot
         @level_of_crank += 1
-        if cranky? == false && @standing == true
+        if !cranky? && standing?
             "Twang!!!"
         else
             "NO!"
@@ -21,7 +23,7 @@ class Centaur
 
     def run
         @level_of_crank += 1
-        if cranky? == false && @standing == true
+        if !cranky? && standing?
             "Clop clop clop clop!"
         else
             "NO!"
@@ -44,8 +46,26 @@ class Centaur
         !@standing
     end
 
+    def rested?
+        @rested
+    end
+
+    def sick?
+        @sick
+    end
+
+    def drink_potion
+        if standing? && !rested?
+            @rested = true
+        elsif standing? && rested?
+            @sick = true
+        else
+            "Can't drink while laying down or sick"
+        end
+    end
+
     def sleep
-        if @standing == true
+        if standing?
             "NO!"
         else
             @level_of_crank = 0
