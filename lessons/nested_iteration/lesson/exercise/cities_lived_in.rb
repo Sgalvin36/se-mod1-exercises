@@ -9,6 +9,9 @@ cities_lived_in = {
 # Problem #1: 
 # Get a unique list of all of the cities that these humans have lived in  
 # ["Philadelphia", "Fort Collins", "Seattle", "Denver", "Santa Fe", "Portland", "Lansing", "Columbus", "Austin"]
+# uniq_cities = []
+# cities_lived_in.each do |person, cities|
+    
 
 
 
@@ -38,3 +41,12 @@ cities_lived_in = {
 #     "Columbus => 1,
 #     "Austin" => 1
 # }
+people_in_city = Hash.new(0)
+
+cities_lived_in.each do |person, cities|
+    cities.each do |city|
+        people_in_city[city] = people_in_city[city] + 1
+    end
+end
+
+p people_in_city

@@ -4,6 +4,10 @@ RSpec.describe Dog do
 
   it "can exist as an instance" do
     fluffy = Dog.new("Fluffy")
+    fluffy_1 = Dog.new("Fluffy")
+    fluffy_2 = Dog.new("Fluffy")
+
+    puts Dog.woof
   end
 
   xit "can bark" do

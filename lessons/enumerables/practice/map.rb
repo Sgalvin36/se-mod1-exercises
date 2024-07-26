@@ -5,7 +5,9 @@
 def capitalize
     names = ["alice", "bob", "charlie"]
 
-    # Your code goes here
+    names.map do |name|
+        name.capitalize
+    end
 
     # expected return value is ["Alice", "Bob", "Charlie"]
 end
@@ -14,7 +16,7 @@ def doubles
     numbers = [1, 2, 3, 4, 5]
 
     # Your code goes here
-
+    numbers.map {|number| number * 2}
     # expected return value is [2, 4, 6, 8, 10]
 end
 
@@ -62,16 +64,18 @@ def trim_last_letter
     animals = ["dog", "cat", "mouse", "frog", "platypus"]
 
     # Your code goes here
-
+    animals.map do |animal|
+        animal.chop
+    end
     # expected return value is ["do", "ca", "mous", "fro", "platypu"]
 end
 
 
-# p capitalize
-# p doubles
+p capitalize
+p doubles
 # p squares
 # p lengths
 # p normalize_zip_codes
 # p backwards
 # p words_with_no_vowels
-# p trim_last_letter
+p trim_last_letter

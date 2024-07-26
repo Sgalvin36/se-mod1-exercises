@@ -1,14 +1,17 @@
 # ./grubhub_order.rb
+require "./lib/deliverable"
+
 class GrubhubOrder
-  def confirmation(thing)
-    "You got #{thing}."
-  end
+  include Deliverable
+  # def confirmation(thing)
+  #   "You got #{thing}."
+  # end
 
-  def delivery
-    "Your food will arrive in 45-60 minutes."
-  end
+  # def delivery
+  #   "Your food will arrive in 45-60 minutes."
+  # end
 
-  def review
-    "Please rate your order within 30 days."
-  end
+  # def review
+  #   "Please rate your order within 30 days."
+  # end
 end

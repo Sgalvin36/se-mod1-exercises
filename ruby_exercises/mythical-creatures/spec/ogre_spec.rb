@@ -46,7 +46,7 @@ RSpec.describe Ogre do
     human = Human.new
 
     6.times { ogre.encounter(human) }
-
+    
     expect(human.notices_ogre?).to be true
   end
 
